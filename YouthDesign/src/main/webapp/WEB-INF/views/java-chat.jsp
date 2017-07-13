@@ -5,8 +5,26 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type='text/javascript' src='${pageContext.request.contextPath }/dwr/engine.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath }/dwr/util.js'></script>
+<script type='text/javascript' src='${pageContext.request.contextPath }/dwr/interface/JavaChat.js'></script>
+<script type="text/javascript">
+	function init() {
+		dwr.engine.setActiveReverseAjax(true);
+	}
+	
+	function sendMessage() {
+	  	JavaChat.addMessage(dwr.util.getValue("text"));
+	}
+</script>
 </head>
 <body>
-
+<p>
+  	Your Message:
+  	<input id="text" onkeypress="dwr.util.onReturn(event, sendMessage)"/>
+  	<input type="button" value="Send" onclick="sendMessage()"/>
+</p>
+<hr/>
+<div id="chatlog"></div>
 </body>
 </html>
