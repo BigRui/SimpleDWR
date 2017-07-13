@@ -28,7 +28,5 @@
 </head>
 <body>
 <h2>Hello World!</h2>
-<a href="${pageContext.request.contextPath }/reverseajax/toClock">Server-Side Clock</a>
-<a href="${pageContext.request.contextPath }/reverseajax/toPeopleTable">Table Update</a>
 </body>
 </html>

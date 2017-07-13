@@ -17,4 +17,14 @@ public class ReverseajaxController {
 	public String toPeopleTable() {
 		return "people-table";
 	}
+	
+	@RequestMapping(value="/toJavascriptChat", method=RequestMethod.GET)
+	public String toJavascriptChat() {
+		return "javascript-chat";
+	}
+	
+	@RequestMapping(value="/toJavaChat", method=RequestMethod.GET)
+	public String toJavaChat() {
+		return "java-chat";
+	}
 }

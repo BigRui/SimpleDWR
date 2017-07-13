@@ -29,6 +29,8 @@
 	</sp:form>
 	<p>DWR<br />
 	<a href="${pageContext.request.contextPath }/reverseajax/toClock">Server-Side Clock</a><br />
-	<a href="${pageContext.request.contextPath }/reverseajax/toPeopleTable">Table Update</a>
+	<a href="${pageContext.request.contextPath }/reverseajax/toPeopleTable">Table Update</a><br />
+	<a href="${pageContext.request.contextPath }/reverseajax/toJavascriptChat">Javascript Chat</a><br />
+	<a href="${pageContext.request.contextPath }/reverseajax/toJavaChat">Java Chat</a>
 </body>
 </html>
