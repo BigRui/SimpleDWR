@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<display-name>Youth Design</display-name>
+  	
+  	<listener>
+  		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	</listener>
+  	
+	<context-param>
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>
+			classpath*:/application-cfg.xml,
+			classpath*:/dwr-cfg.xml
+		</param-value>
+  	</context-param>
+
+  	<servlet>
+    	<servlet-name>springmvc</servlet-name>
+    	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    	<init-param>
+      		<param-name>contextConfigLocation</param-name>
+      		<param-value>
+				classpath*:/springmvc-cfg.xml
+			</param-value>
+    	</init-param>
+    	<load-on-startup>1</load-on-startup>
+  	</servlet>
+  	<servlet-mapping>
+    	<servlet-name>springmvc</servlet-name>
+    	<url-pattern>/</url-pattern>
+  	</servlet-mapping>
+
+  	<servlet>
+    	<servlet-name>dwr</servlet-name>
+    	<servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+		<init-param>
+	     <param-name>fileUploadMaxBytes</param-name>
+	     <param-value>25000</param-value>
+	    </init-param>
+		
+	    <!-- This should NEVER be present in live -->
+	    <init-param>
+	      <param-name>debug</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	  
+		<init-param>
+	      <param-name>accessLogLevel</param-name>
+	      <param-value>runtimeexception</param-value>
+	    </init-param>
+	    
+	    <!-- Remove this unless you want to use active reverse ajax -->
+	    <init-param>
+	      <param-name>activeReverseAjaxEnabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	
+	    <!-- By default DWR creates application scope objects when they are first
+	    used. This creates them when the app-server is started -->
+	    <init-param>
+	      <param-name>initApplicationScopeCreatorsAtStartup</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	
+	    <!-- WARNING: allowing JSON-RPC connections bypasses much of the security
+	    protection that DWR gives you. Take this out if security is important -->
+	    <init-param>
+	      <param-name>jsonRpcEnabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	
+	    <!-- WARNING: allowing JSONP connections bypasses much of the security
+	    protection that DWR gives you. Take this out if security is important -->
+	    <init-param>
+	      <param-name>jsonpEnabled</param-name>
+	      <param-value>true</param-value>
+	    </init-param>
+	
+	    <!-- data: URLs are good for small images, but are slower, and could OOM for
+	    larger images. Leave this out (or keep 'false') for anything but small images -->
+	    <init-param>
+	      <param-name>preferDataUrlSchema</param-name>
+	      <param-value>false</param-value>
+	    </init-param>
+	    <load-on-startup>1</load-on-startup>
+  	</servlet>  	
+  	<servlet-mapping>
+    	<servlet-name>dwr</servlet-name>
+    	<url-pattern>/dwr/*</url-pattern>
+  	</servlet-mapping>
+  	
+  	<welcome-file-list>
+    	<welcome-file>index.html</welcome-file>
+    	<welcome-file>index.htm</welcome-file>
+    	<welcome-file>index.jsp</welcome-file>
+    	<welcome-file>default.html</welcome-file>
+    	<welcome-file>default.htm</welcome-file>
+    	<welcome-file>default.jsp</welcome-file>
+  	</welcome-file-list>
+</web-app>
